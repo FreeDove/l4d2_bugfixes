@@ -2,7 +2,22 @@
 "Games"
 {
 	"left4dead2"
-	{	
+	{
+		"Addresses"
+		{
+			"CDirector"
+			{
+				"windows"
+				{
+					"signature" "DirectorMusicBanks::OnRoundStart"				
+					"read" "12"					
+				}
+				"linux"
+				{
+					"signature" "TheDirector"
+				}
+			}
+		}
 		"Offsets"
 		{
 			"WitchAttackCharaster"
@@ -14,12 +29,7 @@
 			{
 				"windows"	"1056"
 				"linux"		"1048"
-			}
-			/* Offset into CDirectorMusicBanks::OnRoundStart */
-			"TheDirector"
-			{
-				"windows"	"12"
-			}			
+			}		
 		}
 		"Signatures"
 		{

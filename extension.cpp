@@ -170,21 +170,10 @@ bool BugFixes::SDK_OnLoad( char *error, size_t maxlength, bool late )
 
 	//Get L4D2 Globals
 	char *addr = NULL;
-	int offset = 0;
-
-	#ifdef PLATFORM_WINDOWS
-		/* g_pDirector */
-		if (!g_pGameConf->GetMemSig("DirectorMusicBanks::OnRoundStart", (void **)&addr) || !addr)
-			return false;
-		if (!g_pGameConf->GetOffset("TheDirector", &offset) || !offset)
-			return false;
-		g_pDirector = *reinterpret_cast<void ***>(addr + offset);
-	#elif defined PLATFORM_LINUX
-		/* g_pDirector */
-		if (!g_pGameConf->GetMemSig("TheDirector", (void **)&addr) || !addr)
-			return false;
-		g_pDirector = reinterpret_cast<void **>(addr);
-	#endif
+	if (!g_pGameConf->GetAddress("CDirector", (void **)&addr) || !addr)
+		return false;
+	
+	g_pDirector = reinterpret_cast<void **>(addr);
 
 	return true;
 }
